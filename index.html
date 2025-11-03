@@ -42,51 +42,57 @@
     <section id="shop">
         <h2>Our Products</h2>
 
-        <div class="product-card" data-name="Hynecks" data-price="1200">
-            <img src="p8.jpg" alt="Hynecks" />
+        <div class="product-card" data-name="Hynecks" data-price="1400">
+            <img src="images/hynecks.jpg" alt="Hynecks" /> 
             <div class="product-name">Hynecks</div>
             <div class="product-price">Rs. 1400</div>
             <button class="btn add-to-cart">Add to Cart</button>
-            <a href="https://esewa.com.np/#/home?amt=1200&pid=HYNECKS001&scd=9812714019" target="_blank" class="btn">Pay with eSewa</a>
+            <a href="javascript:void(0)" class="btn whatsapp-btn">Order Now (WhatsApp)</a>
+            <a href="https://esewa.com.np/#/home?amt=1400&pid=HYNECKS001&scd=9812714019" target="_blank" class="btn">Pay with eSewa</a>
         </div>
 
-        <div class="product-card" data-name="Hoodies" data-price="1800">
-            <img src="p7.jpg" alt="Hoodies" />
+        <div class="product-card" data-name="Hoodies" data-price="2200">
+            <img src="images/hoodies.jpg" alt="Hoodies" />
             <div class="product-name">Hoodies</div>
             <div class="product-price">Rs. 2200</div>
             <button class="btn add-to-cart">Add to Cart</button>
-            <a href="https://esewa.com.np/#/home?amt=1800&pid=HOODIES002&scd=9812714019" target="_blank" class="btn">Pay with eSewa</a>
+            <a href="javascript:void(0)" class="btn whatsapp-btn">Order Now (WhatsApp)</a>
+            <a href="https://esewa.com.np/#/home?amt=2200&pid=HOODIES002&scd=9812714019" target="_blank" class="btn">Pay with eSewa</a>
         </div>
 
-        <div class="product-card" data-name="Fur Jockers" data-price="2400">
-            <img src="p4.jpg" alt="Fur Jockers" />
-            <div class="product-name">Fur Jockers</div>
+        <div class="product-card" data-name="Fur Jackets" data-price="1100">
+            <img src="images/fur_jackets.jpg" alt="Fur Jackets" />
+            <div class="product-name">Fur Jackets</div>
             <div class="product-price">Rs. 1100</div>
             <button class="btn add-to-cart">Add to Cart</button>
-            <a href="https://esewa.com.np/#/home?amt=2400&pid=FURJACKETS003&scd=9812714019" target="_blank" class="btn">Pay with eSewa</a>
+            <a href="javascript:void(0)" class="btn whatsapp-btn">Order Now (WhatsApp)</a>
+            <a href="https://esewa.com.np/#/home?amt=1100&pid=FURJACKETS003&scd=9812714019" target="_blank" class="btn">Pay with eSewa</a>
         </div>
 
-        <div class="product-card" data-name="Mens Premium Jacket" data-price="1800">
-            <img src="p3.jpg" alt="Mens Premium Jacket" />
+        <div class="product-card" data-name="Mens Premium Jacket" data-price="2200">
+            <img src="images/mens_premium_jacket.jpg" alt="Mens Premium Jacket" />
             <div class="product-name">Mens Premium Jacket</div>
-            <div class="product-price">Rs. 1800</div>
+            <div class="product-price">Rs. 2200</div>
             <button class="btn add-to-cart">Add to Cart</button>
+            <a href="javascript:void(0)" class="btn whatsapp-btn">Order Now (WhatsApp)</a>
             <a href="https://esewa.com.np/#/home?amt=2200&pid=MENSPREMJACKET004&scd=9812714019" target="_blank" class="btn">Pay with eSewa</a>
         </div>
 
         <div class="product-card" data-name="Highnecked Hynecks" data-price="1500">
-            <img src="p5.png" alt="Highnecked Hynecks" />
+            <img src="images/highnecked_hynecks.jpg" alt="Highnecked Hynecks" />
             <div class="product-name">Highnecked Hynecks</div>
-            <div class="product-price">Rs. 1300</div>
+            <div class="product-price">Rs. 1500</div>
             <button class="btn add-to-cart">Add to Cart</button>
+            <a href="javascript:void(0)" class="btn whatsapp-btn">Order Now (WhatsApp)</a>
             <a href="https://esewa.com.np/#/home?amt=1500&pid=HIGHNECKHYNECKS005&scd=9812714019" target="_blank" class="btn">Pay with eSewa</a>
         </div>
 
-        <div class="product-card" data-name="Premium Mens Jockers" data-price="1600">
-            <img src="p0.jpg" alt="Premium Mens Jockers" />
-            <div class="product-name">premium mens Jockers</div>
+        <div class="product-card" data-name="Premium Wool Hynecks" data-price="1600">
+            <img src="images/premium_wool_hynecks.jpg" alt="Premium Wool Hynecks" />
+            <div class="product-name">Premium Wool Hynecks</div>
             <div class="product-price">Rs. 1600</div>
             <button class="btn add-to-cart">Add to Cart</button>
+            <a href="javascript:void(0)" class="btn whatsapp-btn">Order Now (WhatsApp)</a>
             <a href="https://esewa.com.np/#/home?amt=1600&pid=PREMIUMWOOLHYNECKS006&scd=9812714019" target="_blank" class="btn">Pay with eSewa</a>
         </div>
     </section>
@@ -101,6 +107,8 @@
     </section>
 </main>
 
+<div id="auth-btn">👤 Login</div>
+
 <div id="cart">🛒 Cart (0)</div>
 
 <div id="cart-modal">
@@ -108,6 +116,53 @@
     <h3>Your Cart</h3>
     <div id="cart-items"></div>
     <div id="cart-total"></div>
+</div>
+
+<div id="login-modal">
+    <button id="close-login">×</button>
+    <div id="login-form-container">
+        <h3>Customer Login</h3>
+        
+        <div class="social-login">
+            <p>Log in with:</p>
+            <button class="btn social-btn fb-btn">Facebook</button>
+            <button class="btn social-btn insta-btn">Instagram</button>
+            <button class="btn social-btn email-btn">Email/Password</button>
+            <p class="divider"><span>OR</span></p>
+        </div>
+
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit" class="btn">Log In</button>
+            <p id="login-message" style="color: red; margin-top: 10px; display: none;"></p>
+        </form>
+        <p class="register-link">Don't have an account? <a href="#">Register Now</a></p>
+    </div>
+</div>
+
+<div id="address-modal">
+    <button id="close-address">×</button>
+    <h3>Provide Delivery Details</h3>
+    <form id="address-form">
+        <label for="order-name">Your Full Name:</label>
+        <input type="text" id="order-name" name="order-name" required>
+
+        <label for="order-address">Delivery Address:</label>
+        <input type="text" id="order-address" name="order-address" required>
+        
+        <label for="order-phone">Phone Number:</label>
+        <input type="tel" id="order-phone" name="order-phone" required>
+
+        <input type="hidden" id="order-product-name">
+        <input type="hidden" id="order-product-price">
+
+        <button type="submit" class="btn whatsapp-send-btn">Send Order via WhatsApp</button>
+    </form>
 </div>
 
 <footer>
