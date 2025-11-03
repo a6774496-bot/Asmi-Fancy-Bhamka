@@ -324,16 +324,18 @@ h2 {
     background: #357bd9;
 }
 
+/* --- LOGIN MODAL POSITIONING --- */
 #login-modal {
     position: fixed;
-    top: 60px;
-    right: 140px; 
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for exact centering */
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     width: 300px;
     padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5); /* Stronger shadow to pop out */
     display: none;
     z-index: 1001;
 }
@@ -352,7 +354,8 @@ h2 {
 }
 
 #login-modal input[type="text"],
-#login-modal input[type="password"] {
+#login-modal input[type="password"],
+#login-modal input[type="email"] { /* Added email type for consistency */
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -394,7 +397,7 @@ h2 {
     font-weight: 600;
 }
 
-/* --- Social Buttons (Customized to Blue Theme) --- */
+/* Social Buttons (Customized to Blue Theme) */
 .social-login p {
     text-align: center;
     margin-bottom: 10px;
@@ -423,19 +426,19 @@ h2 {
 .divider { text-align: center; border-bottom: 1px solid #ccc; line-height: 0.1em; margin: 20px 0; }
 .divider span { background: #fff; padding: 0 10px; }
 
-/* --- ADDRESS MODAL (for WhatsApp Order) --- */
+/* --- ADDRESS MODAL POSITIONING --- */
 #address-modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for exact centering */
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     width: 350px;
     max-width: 90%;
     padding: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* Stronger shadow to pop out */
     display: none;
     z-index: 1002;
 }
