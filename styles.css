@@ -6,12 +6,12 @@
 }
 
 body {
-    /* --- ANIMATED BACKGROUND STYLES START --- */
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); /* Gradient Colors */
-    background-size: 400% 400%; /* Make background larger for smooth movement */
-    animation: gradientAnimation 15s ease infinite; /* Apply the animation */
-    min-height: 100vh; /* Ensure body covers the full height */
-    /* --- ANIMATED BACKGROUND STYLES END --- */
+    /* --- ANIMATED BACKGROUND STYLES --- */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    min-height: 100vh; 
+    /* ---------------------------------- */
 
     color: #222;
     line-height: 1.6;
@@ -22,15 +22,9 @@ body {
 
 /* Keyframes for the Animation */
 @keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 header {
@@ -61,6 +55,7 @@ header p {
     align-items: center;
     justify-content: center;
     text-align: center;
+    /* NOTE: You should change this URL to your own hero image! */
     background: url('https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1400&q=80') no-repeat center/cover;
     margin-bottom: 20px;
     border-radius: 12px;
@@ -125,7 +120,6 @@ nav a.active {
 
 section {
     padding: 20px 0;
-    /* Added white background to sections so content is legible against the animated body background */
     background-color: #ffffff; 
     padding: 20px;
     border-radius: 8px;
@@ -155,7 +149,7 @@ h2 {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
     gap: 20px;
-    background-color: transparent; /* Remove background from the shop container itself */
+    background-color: transparent;
     box-shadow: none;
     padding: 0;
 }
@@ -170,7 +164,7 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 380px;
+    height: 420px; 
 }
 
 .product-card:hover {
@@ -216,6 +210,16 @@ h2 {
 
 .btn:hover {
     background: #444;
+}
+
+/* --- WHATSAPP BUTTON STYLE --- */
+.product-card .whatsapp-btn {
+    background-color: #25d366; /* WhatsApp green */
+    color: #fff;
+    margin-bottom: 5px; 
+}
+.product-card .whatsapp-btn:hover {
+    background-color: #128c7e;
 }
 
 /* Cart */
@@ -300,6 +304,185 @@ h2 {
     font-weight: 700;
 }
 
+/* --- LOGIN PORTAL STYLES --- */
+#auth-btn {
+    position: fixed;
+    top: 20px;
+    right: 140px; 
+    background: #4a90e2; 
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    z-index: 1000;
+    user-select: none;
+    transition: background 0.3s;
+}
+
+#auth-btn:hover {
+    background: #357bd9;
+}
+
+#login-modal {
+    position: fixed;
+    top: 60px;
+    right: 140px; 
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1001;
+}
+
+#login-modal h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+#login-modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+#login-modal input[type="text"],
+#login-modal input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#login-modal .btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: #4a90e2;
+}
+
+#login-modal .btn:hover {
+    background: #357bd9;
+}
+
+#close-login {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #777;
+    font-weight: 700;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+.register-link a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* --- Social Buttons (Customized to Blue Theme) --- */
+.social-login p {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.social-btn {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    font-weight: 600;
+    background-color: #4a90e2; /* Unified Blue */
+    color: #fff;
+}
+.social-btn:hover { 
+    background-color: #357bd9; /* Unified Darker Blue */
+}
+
+.email-btn { 
+    background-color: #ccc; 
+    color: #333; 
+}
+.email-btn:hover { 
+    background-color: #bbb; 
+}
+
+.divider { text-align: center; border-bottom: 1px solid #ccc; line-height: 0.1em; margin: 20px 0; }
+.divider span { background: #fff; padding: 0 10px; }
+
+/* --- ADDRESS MODAL (for WhatsApp Order) --- */
+#address-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 350px;
+    max-width: 90%;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 1002;
+}
+
+#address-modal h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#address-modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#address-modal input[type="text"],
+#address-modal input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#address-modal #close-address {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #777;
+    font-weight: 700;
+}
+
+#address-form .whatsapp-send-btn {
+    background-color: #25d366;
+    color: #fff;
+    width: 100%;
+    padding: 12px;
+}
+
+#address-form .whatsapp-send-btn:hover {
+    background-color: #128c7e;
+}
+
 /* Contact */
 #contact p {
     margin-bottom: 8px;
@@ -325,23 +508,16 @@ footer {
     margin-top: 40px;
     color: #777;
     font-size: 0.9rem;
-    /* Added background to footer */
     background-color: #ffffff;
     border-radius: 0 0 8px 8px;
 }
 
 @media (max-width: 600px) {
-    #hero {
-        height: 280px;
-        padding: 0 10px;
-    }
-    #hero h1 {
-        font-size: 2rem;
-    }
-    #hero p {
-        font-size: 1rem;
-    }
-    nav {
-        gap: 10px;
-    }
+    #hero { height: 280px; padding: 0 10px; }
+    #hero h1 { font-size: 2rem; }
+    #hero p { font-size: 1rem; }
+    nav { gap: 10px; }
+    #auth-btn, #cart { padding: 10px 12px; font-size: 0.8rem; }
+    #auth-btn { right: 80px; }
+    #cart { right: 10px; }
 }
