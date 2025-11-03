@@ -29,7 +29,7 @@ NAV_LINKS.forEach(link => {
 function sendNewCustomerEmail(customerDetails) {
     console.log(`[SERVER STUB] Sending email to ${ADMIN_EMAIL} with new customer data:`, customerDetails);
     // In a real application, this would be an AJAX call to a server endpoint.
-    alert(`[NOTICE] New registration attempt details ready to be sent to ${ADMIN_EMAIL} on a real server!`);
+    alert(`[NOTICE] New registration attempt details details ready to be sent to ${ADMIN_EMAIL} on a real server!`);
 }
 
 function handleSocialLogin(platform) {
@@ -113,14 +113,16 @@ function updateAuthButton() {
 }
 
 function toggleLoginModal() {
+    // If the user is currently logged in, clicking the button logs them out
     if (userIsLoggedIn) {
         userIsLoggedIn = false;
         updateAuthButton();
         alert("You have been successfully logged out.");
     } else {
+        // If not logged in, show the modal (closing others first)
         if (cartModal.style.display === 'block') { closeCartModal(); }
         if (addressModal.style.display === 'block') { closeAddressModal(); }
-        loginModal.style.display = loginModal.style.display === 'block' ? 'none' : 'block';
+        loginModal.style.display = 'block'; // Ensure modal is shown
         loginMessage.style.display = 'none'; 
     }
 }
@@ -178,7 +180,7 @@ function showAddressModal(productName, productPrice) {
     if (cartModal.style.display === 'block') { closeCartModal(); }
     if (loginModal.style.display === 'block') { closeLoginModal(); }
     
-    addressModal.style.display = 'block';
+    addressModal.style.display = 'block'; // Ensure modal is shown
 }
 
 function closeAddressModal() {
@@ -186,8 +188,10 @@ function closeAddressModal() {
     addressForm.reset();
 }
 
+// *** CRITICAL FIX: Event listener for all WhatsApp buttons ***
 document.querySelectorAll('.whatsapp-btn').forEach(btn => {
     btn.addEventListener('click', e => {
+        e.preventDefault(); // Stop the default anchor behavior first
         const card = e.target.closest('.product-card');
         const name = card.getAttribute('data-name');
         const price = card.getAttribute('data-price');
